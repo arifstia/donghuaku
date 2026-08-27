@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b0f14">
+<meta name="description" content="DonghuaKu V3">
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/icon-192.png">
+<title>DonghuaKu V3</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#080b10;color:#fff;font-family:Arial,sans-serif}button,input,select{font:inherit}button{border:0;border-radius:7px;background:#182230;color:#fff;padding:9px 12px}header{position:sticky;top:0;z-index:20;background:#0c1118ee;border-bottom:1px solid #202b39;padding:12px 15px;backdrop-filter:blur(10px)}.top{display:flex;justify-content:space-between;align-items:center}.logo{font-weight:800;font-size:21px}.search{width:100%;margin-top:10px;background:#151d28;border:1px solid #293546;color:#fff;border-radius:7px;padding:12px;outline:0}main{max-width:1180px;margin:auto;padding:16px}.filters{display:flex;gap:7px;overflow:auto;margin-bottom:17px}.filters button.active{background:#1687ff}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:13px}.card{background:#121923;border-radius:7px;overflow:hidden;cursor:pointer}.card img{width:100%;aspect-ratio:2/3;object-fit:cover;display:block}.info{padding:9px}.title{font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:11px;color:#8e99a8;margin-top:5px}.loading,.empty{padding:30px;text-align:center;color:#929dac}.detail,.player,.settings{display:none;position:fixed;inset:0;z-index:100;background:#080b10;overflow:auto}.detail .hero{max-width:900px;margin:auto;padding:18px}.detail img.cover{width:150px;aspect-ratio:2/3;object-fit:cover;border-radius:8px;float:left;margin:0 16px 10px 0}.detail h2{margin-top:0}.tag{display:inline-block;background:#182230;border-radius:5px;padding:5px 7px;margin:3px;font-size:11px}.clear{clear:both}.close{background:transparent;font-size:27px;padding:4px 8px}.video-wrap{position:relative;background:#000;max-width:1200px;margin:auto}.video-wrap video{display:block;width:100%;max-height:76vh;background:#000}.controls{position:absolute;bottom:0;left:0;right:0;padding:12px;background:linear-gradient(transparent,#000);}.seek{width:100%;accent-color:#1687ff}.row{display:flex;gap:7px;align-items:center}.grow{flex:1}.playerhead{padding:10px 13px;background:#0c1118;position:sticky;top:0;z-index:2}.below{max-width:1200px;margin:auto;padding:14px}.episodes{display:flex;flex-wrap:wrap;gap:6px}.ep.active,.server.active{background:#1687ff}.server{margin:3px}.settings{padding:18px}.settingsbox{max-width:500px;margin:auto}.setting{padding:15px 0;border-bottom:1px solid #202b39;display:flex;justify-content:space-between}.install{display:none;background:#1687ff}@media(orientation:landscape) and (max-height:600px){.playerhead,.below{display:none}.video-wrap,.video-wrap video{height:100vh;max-height:none}.video-wrap video{object-fit:contain}}
+</style>
+</head>
+<body>
+<header><div class="top"><div class="logo">🎬 DonghuaKu</div><div><button id="install" class="install">📲 Install</button><button id="settingsBtn">⚙️</button></div></div><input id="search" class="search" placeholder="Cari donghua..." type="search"></header>
+<main>
+<div class="filters"><button class="active" data-mode="latest">Terbaru</button><button data-mode="popular">Popular</button><button data-mode="ongoing">Ongoing</button><button data-mode="completed">Completed</button><button data-mode="random">🎲 Surprise Me</button></div>
+<h2 id="sectionTitle">Latest Release</h2><div id="grid" class="grid"><div class="loading">Memuat katalog...</div></div>
+</main>
+
+<section id="detail" class="detail"><div class="hero"><button class="close" id="detailClose">‹</button><div id="detailBody"></div></div></section>
+
+<section id="player" class="player">
+<div class="playerhead"><button class="close" id="playerClose">‹</button><b id="playerTitle"></b><small id="episodeName"></small></div>
+<div class="video-wrap" id="videoWrap"><video id="video" playsinline preload="metadata"></video><div class="controls"><input id="seek" class="seek" type="range" min="0" max="100" value="0"><div class="row"><button id="play">▶</button><button id="back10">↶10</button><button id="forward10">10↷</button><span id="time">00:00 / 00:00</span><span class="grow"></span><button id="mute">🔊</button><button id="full">⛶</button></div></div></div>
+<div class="below"><div class="row"><button id="prev">⏮</button><button id="next">⏭ Berikutnya</button><button id="randomEp">🔀</button></div><h3>Episode</h3><div id="episodes" class="episodes"></div><h3>Server</h3><div id="servers"></div></div>
+</section>
+
+<section id="settings" class="settings"><div class="settingsbox"><button class="close" id="settingsClose">‹</button><h2>Pengaturan</h2><div class="setting">Autoplay <input id="autoplay" type="checkbox" checked></div><div class="setting">Kecepatan <select id="speed"><option>0.75</option><option selected>1</option><option>1.25</option><option>1.5</option><option>2</option></select></div><p style="color:#8994a5;font-size:12px">Katalog diperbarui dari backend. Player hanya dapat memutar sumber video yang tersedia dan diizinkan.</p></div></section>
+<script src="/js/app.js"></script>
+</body>
+</html>
