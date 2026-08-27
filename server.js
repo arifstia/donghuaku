@@ -27,5 +27,5 @@ async function provider(endpoint){
 app.get("/api/catalog",async(req,res)=>{try{res.json(await provider("/catalog?mode="+encodeURIComponent(req.query.mode||"latest")))}catch(e){res.status(503).json({error:e.message})}});
 app.get("/api/search",async(req,res)=>{try{res.json(await provider("/search?q="+encodeURIComponent(req.query.q||"")))}catch(e){res.status(503).json({error:e.message})}});
 app.get("/api/detail/:id",async(req,res)=>{try{res.json(await provider("/detail/"+encodeURIComponent(req.params.id)))}catch(e){res.status(503).json({error:e.message})}});
-app.get("*",(req,res)=>res.sendFile(path.join(__dirname,"public/index.html")));
+app.get("/{*splat}",(req,res)=>res.sendFile(path.join(__dirname,"public/index.html")));
 app.listen(PORT,()=>console.log("DonghuaKu V3 running on http://localhost:"+PORT));
